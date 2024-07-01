@@ -1,0 +1,18 @@
+
+# this yaml file is to be within the source code in order to trigger pipeline events
+# and allow running builds from specific branches.
+
+resources:
+  repositories:
+    - repository: ExamFrontendPipelines
+      type: git
+      name: Exam Pipelines
+    - repository: exam-web-frontend
+      type: gitHub
+      endpoint: gitHub
+      name: ExamFrontend/web
+      trigger:
+        - master
+jobs:
+  - template: templates/build.yml@ExamFrontendPipelines
+     

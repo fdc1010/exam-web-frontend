@@ -1,0 +1,21 @@
+
+# this yaml file is to be within the source code in order to trigger pipeline events
+# and allow running builds from specific branches.
+
+resources:
+  repositories:
+    - repository: ExamBitBucketTestPipelines
+      type: git
+      name: Exam Pipelines
+    - repository: exam-web-frontend
+      type: bitbucket
+      endpoint: bitbucket
+      name: ExamFrontend/web
+      trigger:
+        - master
+
+variables:
+    SOURCE_BRANCH_NAME: $[replace(variables['Build.SourceBranch'], 'refs/heads/', '')]
+
+jobs:
+  - template: templates/build-test.yml@ExamBitBucketTestPipelines

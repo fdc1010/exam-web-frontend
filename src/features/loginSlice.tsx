@@ -1,7 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { generateToken } from "../helper/generateToken";
-import { loginUser } from "../api/api";
-import { AxiosResponse } from "axios";
 import { getCookieValue } from "../helper/getCookieValue";
 
 interface LoginState {
